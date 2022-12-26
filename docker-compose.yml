@@ -26,7 +26,7 @@ services:
       GITHUBCLIENTSECRET: "d00f008de7fd63961fe60c077944d652054c340d"
     networks:
       app:
-  vteams-frontend:
+  client:
     image: kristinakalinchuk/vteams-frontend
     container_name: vue
     ports:
@@ -35,3 +35,12 @@ services:
       VUE_APP_GITHUBPWD: github forever
     networks:
       app:
+    # links:
+    #   - api:server
+  robot:
+    image: kristinakalinchuk/vteams-robot
+    container_name: robot
+    networks:
+      app:
+    links:
+      - api:server
