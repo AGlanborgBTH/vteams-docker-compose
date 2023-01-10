@@ -33,14 +33,16 @@ services:
       - '8080:8080'
     environment:
       VUE_APP_GITHUBPWD: github forever
+    depends_on:
+      - api
     networks:
       app:
-    # links:
-    #   - api:server
   robot:
     image: kristinakalinchuk/vteams-robot
     container_name: robot
     networks:
       app:
+    depends_on:
+      - api
     links:
       - api:server
